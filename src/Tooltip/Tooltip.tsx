@@ -43,7 +43,7 @@ export const Tooltip = ({
 	children,
 	text,
 	type = TooltipType.Default,
-	placement,
+	placement = 'top',
 	offset: _offset = ARROW_SIZE / 2 + 5,
 	...props
 }: TooltipProps) => {
