@@ -56,7 +56,6 @@ export const Tooltip = ({
 		context,
 		reference,
 		floating,
-		refs,
 		placement: placementState,
 		middlewareData: { arrow: middlewareArrow },
 	} = useFloating({
