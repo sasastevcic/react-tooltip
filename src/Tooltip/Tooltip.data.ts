@@ -25,9 +25,9 @@ export type ColorProps = {
 };
 
 export const mapColors: Record<TooltipType, string> = {
-	[TooltipType.Default]: 'black',
-	[TooltipType.Success]: 'green',
-	[TooltipType.Error]: 'red',
+	[TooltipType.Default]: '#626262',
+	[TooltipType.Success]: '#3c9136',
+	[TooltipType.Error]: '#c60028',
 };
 
 export const ARROW_SIZE = 16;

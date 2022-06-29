@@ -127,12 +127,14 @@ export const Tooltip = ({
 		};
 	}, [arrowX, arrowY]);
 
+	const backgroundColor = useMemo(() => mapColors[type], [type]);
+
 	return (
 		<StyledTooltipContainer {...getReferenceProps({ ref: reference })}>
 			{children}
-			<AnimatePresence>
-				{showTooltip && (
-					<FloatingPortal id="tooltip">
+			<FloatingPortal id="tooltip">
+				<AnimatePresence>
+					{showTooltip && (
 						<StyledTooltip
 							{...getFloatingProps({
 								ref: floating,
@@ -144,7 +146,7 @@ export const Tooltip = ({
 							})}
 						>
 							<StyledTooltipContent
-								$backgroundColor={mapColors[type]}
+								$backgroundColor={backgroundColor}
 								initial="hidden"
 								animate="visible"
 								exit="hidden"
@@ -153,23 +155,18 @@ export const Tooltip = ({
 							>
 								{text}
 								<StyledArrow
-									$backgroundColor={mapColors[type]}
 									xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 24 24"
 									ref={arrowRef}
 									style={arrowAxis[placementState]}
 								>
-									<path
-										fill="currentColor"
-										d="M24 0 12 11.96 0 0z"
-										strokeLinecap="round"
-									/>
+									<path fill="currentColor" d="M24 0 12 11.96 0 0z" />
 								</StyledArrow>
 							</StyledTooltipContent>
 						</StyledTooltip>
-					</FloatingPortal>
-				)}
-			</AnimatePresence>
+					)}
+				</AnimatePresence>
+			</FloatingPortal>
 		</StyledTooltipContainer>
 	);
 };

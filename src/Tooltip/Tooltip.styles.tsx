@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
 	ARROW_FALLBACK_OFFSET,
 	ARROW_SIZE,
@@ -27,14 +27,19 @@ export const StyledTooltipContent = styled(motion.div)<ColorProps>`
 	min-height: ${ARROW_SIZE + (BORDER_RADIUS || ARROW_FALLBACK_OFFSET) * 2}px;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 
-	background-color: ${({ $backgroundColor }) => $backgroundColor};
+	${({ $backgroundColor }) => css`
+		background-color: ${$backgroundColor};
+
+		svg {
+			color: ${$backgroundColor};
+		}
+	`};
 `;
 
-export const StyledArrow = styled.svg<ColorProps>`
+export const StyledArrow = styled.svg`
 	position: absolute;
 	width: ${ARROW_SIZE}px;
 	height: ${ARROW_SIZE}px;
-
-	color: ${({ $backgroundColor }) => $backgroundColor}; ;
 `;
